@@ -1,0 +1,28 @@
+language: rust
+
+rust:
+    - stable
+    - beta
+    - nightly
+
+notifications:
+    irc: "irc.mozilla.org#piston-internals"
+
+os:
+    - linux
+
+addons:
+    apt:
+        packages:
+            - libxxf86vm-dev
+            - libosmesa6-dev
+
+script:
+    - cargo build --verbose
+    - cargo test --verbose
+    - cargo build --no-default-features --features "glutin glium" --example glutin_glium
+    - cargo build --no-default-features --features "glutin" --example glutin_gfx
+    - cargo doc --verbose
+
+after_success:
+    - curl http://docs.piston.rs/travis-doc-upload.sh | sh

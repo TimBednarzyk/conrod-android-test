@@ -1,0 +1,23 @@
+[package]
+name = "conrod_test"
+version = "0.1.0"
+authors = ["Timothy Bednarzyk <timbednaryk@gmail.com>"]
+
+[dependencies]
+image = "*"
+rand = "*"
+rusttype = "0.2.0"
+
+[dependencies.conrod]
+version = "*"
+features = ["glutin", "glium"]
+path = "conrod"
+
+[target.'cfg(android)'.dependencies]
+android_glue = "*"
+
+[target.'cfg(not(android))'.dependencies]
+find_folder = "*"
+
+[package.metadata.android]
+assets = "assets"
