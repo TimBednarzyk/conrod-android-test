@@ -13,10 +13,10 @@ version = "*"
 features = ["glutin", "glium"]
 path = "conrod"
 
-[target.'cfg(android)'.dependencies]
+[target.'cfg(target_os="android")'.dependencies]
 android_glue = "*"
 
-[target.'cfg(not(android))'.dependencies]
+[target.'cfg(not(target_os="android"))'.dependencies]
 find_folder = "*"
 
 [package.metadata.android]

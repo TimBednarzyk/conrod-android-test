@@ -136,6 +136,8 @@ pub fn main() {
 
         // Draw the `Ui`.
         if let Some(primitives) = ui.draw_if_changed() {
+            // The issue is somewhere in this block of code
+
             renderer.fill(&display, primitives, &image_map);
             let mut target = display.draw();
             target.clear_color(1.0, 0.0, 0.0, 1.0);
