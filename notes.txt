@@ -16,3 +16,10 @@ Some notes:
 
 5. The error is caused in conrod/src/backend/glium.rs. Go to that file and find
    the comment beginning with CONROD_TEST for information.
+
+6. The reason the error at CONROD_TEST happens happens because renderer.fill()
+   for some reason gets filled with nothing the first time through. There should
+   probably be something that doesn't put a draw command in renderer.fill() if
+   there are 0 vertices. Doing that will stop the error from coming up, but
+   another fix is needed to fix the fact that nothing shows up until you tap the
+   screen.
