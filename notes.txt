@@ -1,0 +1,12 @@
+Some notes:
+
+1. Tapping on the screen after the red clear color comes up results in conrod
+   rendering just fine - No more "less than 3 vertices" error or anything.
+
+2. conrod appears to not be responding to Touch events - tapping buttons does
+   nothing.
+
+3. More related to glutin or android_glue, but putting two fingers on the screen
+   results in something interesting. Moving the second finger generates a Moved
+   event for the first finger, resulting in a Moved event where the old and new
+   coordinates are exactly the same.

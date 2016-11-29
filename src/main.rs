@@ -108,7 +108,8 @@ pub fn main() {
                 glium::glutin::Event::KeyboardInput(_, _, Some(glium::glutin::VirtualKeyCode::Escape)) |
                 glium::glutin::Event::Closed =>
                     break 'main,
-
+                glium::glutin::Event::Touch(touch) =>
+                    println!("{:?}", touch),
                 _ => {},
             }
         }
@@ -136,12 +137,13 @@ pub fn main() {
 
         // Draw the `Ui`.
         if let Some(primitives) = ui.draw_if_changed() {
-            // The issue is somewhere in this block of code
-
             renderer.fill(&display, primitives, &image_map);
             let mut target = display.draw();
             target.clear_color(1.0, 0.0, 0.0, 1.0);
+
+            // The error happens in this call:
             renderer.draw(&display, &mut target, &image_map).unwrap();
+
             target.finish().unwrap();
         }
 
