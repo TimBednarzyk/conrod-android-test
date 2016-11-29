@@ -714,6 +714,9 @@ impl Renderer {
 
                     // Draw text and plain 2D geometry.
                     Draw::Plain(slice) => {
+                        // CONROD_TEST: The culprit is here. For whatever reason,
+                        // slice.len() == 0 the first time around on Android, causing
+                        // vertex_buffer to have 0 vertices.
                         let vertex_buffer = try!(glium::VertexBuffer::new(facade, slice));
                         surface.draw(&vertex_buffer, no_indices, &self.program, &uniforms, &draw_params).unwrap();
                     },

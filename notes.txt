@@ -10,3 +10,9 @@ Some notes:
    results in something interesting. Moving the second finger generates a Moved
    event for the first finger, resulting in a Moved event where the old and new
    coordinates are exactly the same.
+
+4. Everything is small on Android. See
+   https://drive.google.com/file/d/0B98mdHa_-OYeWlJsdjFXdldNbTg/view?usp=sharing
+
+5. The error is caused in conrod/src/backend/glium.rs. Go to that file and find
+   the comment beginning with CONROD_TEST for information.
